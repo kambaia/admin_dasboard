@@ -1,0 +1,54 @@
+.area-bottom{
+             width::100%;
+             display:flex;
+             padding:2rem;
+             >button{
+                width:45%;
+                height:40px;
+                margin:10px;
+                background:transparent;
+                border:1px solid #ff2a00;
+                border-radius:5px;
+                justify-content:center;
+                align-items:center;
+                text-align:center;
+                font-size:1.2em;
+                font-weight:700;
+                span {
+                  padding:10px;
+                }
+             }
+
+
+
+
+        <div className="content">
+          <div className="info-image-computer">
+            <div className="computer-img">
+              <img src={computer_shell_shadow} width="1200" />
+            </div>
+          </div>
+          <div className="descrition">
+            <div className="title">
+              <h2>Com ToqueMedia Em Seu Telemovel Fica Mais Facíl</h2>
+            </div>
+            <div className="descrition-subtitle">
+              <span>Conheça seu público No mundo de hoje, seus fãs são tudo que a Universal Music Artists ajuda a entender melhor seus fãs e em que eles estão prestando atenção. Ao avaliar o tamanho e a composição de seu público, seja por plataforma ou localidade, você e sua equipe podem tomar as decisões certas e aumentar continuamente sua base de fãs.</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="content">
+          <div className="info-image-computer">
+            <img src={phone_shell_shado2} width="1200" />
+          </div>
+          <div className="descrition">
+            <div className="title">
+              <h2>Com ToqueMedia Em Seu Telemovel Fica Mais Facíl</h2>
+            </div>
+            <div className="descrition-subtitle">
+              <span>Conheça seu público No mundo de hoje, seus fãs são tudo que a Universal Music Artists ajuda a entender melhor seus fãs e em que eles estão prestando atenção. Ao avaliar o tamanho e a composição de seu público, seja por plataforma ou localidade, você e sua equipe podem tomar as decisões certas e aumentar continuamente sua base de fãs.</span>
+            </div>
+          </div>
+
+
