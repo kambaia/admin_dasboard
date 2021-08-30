@@ -11,6 +11,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { SignOut } from '../../services/authUser';
 import { DatasContext } from "../../config/DataShare/DataProvider";
 import logo from '../../assets/logo.png';
+import colors from "../../styles/colors";
 const AsideBar: React.FC = () => {
   const history = useHistory();
   const { showMenu, setShowMenu } = useContext(DatasContext);
@@ -25,10 +26,10 @@ const AsideBar: React.FC = () => {
   return (
     <>
       <Container showMenu={showMenu!}>
-        <Menu>
+        <Menu showMenu={showMenu}>
           <img style={{ display: showMenu ? 'block' : 'none' }} src={logo} alt="Toqueplay Logo" />
           <div onClick={onShowShMenu} className="menu-bar"><AiOutlineMenu size={25} className="icon__menu" /></div>
-        </Menu>
+        </Menu >
         <div className="menu-options">
           {console.log(showMenu)}
           <ul>
@@ -52,7 +53,7 @@ const AsideBar: React.FC = () => {
               </li>
             </Link>
 
-            <Link to="/#">
+            <Link to="/classroom">
               <li className="active">
                 <AiOutlineWechat className="icon__menu" />
                 <span className="menu-title">Salas de Bate Papo</span>
@@ -91,17 +92,16 @@ const AsideBar: React.FC = () => {
 export default AsideBar;
 
 
-export const Container = styled.div<{ showMenu: boolean }>`
+export const Container = styled.div<{showMenu: boolean }>`
     position: fixed;
     width:  ${props => props.showMenu ? '19vw' : '6vw'};
     min-height:100vh;
     display:flex;
     flex-direction:column;
     z-index:2;
-   
     background:#fff;
     
-    }
+    
     .menu-options{
       width:100%;
       box-shadow:  0px 0px 8px #fff;
@@ -207,24 +207,25 @@ export const Container = styled.div<{ showMenu: boolean }>`
   
 `;
 
-export const Menu = styled.div`
+export const Menu = styled.div<{ showMenu: boolean }>`
       height:8vh;
       display:flex;
       align-items:center;
       justify-content: space-between;
-      padding:1.5em;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 2px solid ${colors.orange};
       box-shadow:  0px 0px 8px 1px#fff;
-     
+   
       img {
         width: 60px;
         height: 60px;
         margin-right: 30px;
+        margin-left: 25px;
+        padding: 8px;
      
       }
     .menu-bar{
-      margin:0px 15px;
       cursor: pointer;
+      margin-left: ${props => props.showMenu ? 0: 25}px;
     }
 
   @media screen and (max-width:1050px){

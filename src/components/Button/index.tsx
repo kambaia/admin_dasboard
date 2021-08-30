@@ -19,6 +19,9 @@ export const Conteinner = styled.div`
         color: #fff;
         text-align: center;
         transition: filter 0.2s;
+        a{
+            color: #fff;
+        }
         :hover{
             filter: brightness(0.9);
         }

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import Bainner from '../../assets/registraBainner.svg'
+import styled, { keyframes, css } from "styled-components";
+
 import colors from '../colors';
 
 export const Container = styled.div`
@@ -35,8 +35,7 @@ export const Container = styled.div`
             text-align: center;
             
          }
-    }
-
+        }
     .contnt-form{
         flex: 8;
         color: ${colors.text_color};
@@ -50,7 +49,7 @@ export const Container = styled.div`
             display: flex;
             flex-direction: column;
             width: 100%;
-            max-width: 520px;
+            max-width: 420px;
             align-items: stretch;
             justify-content: center;
             padding: 10px 0;
@@ -65,26 +64,28 @@ export const Container = styled.div`
                   width: 100px;
             }
             }
-           
+            .error-message{
+                    padding: 10px 0;
+                    span{
+                        color: #d00;
+                        font-size: 18px;
+                    }
+                }
             form{
                 width: 100%;
                 display: flex;
                 flex-direction: column;
                 margin-top: 15px;
-            
-                input, button, .btn-create {
+                .input{
+                        margin: 5px 0px;
+                    }
+                button, .btn-create {
                     width: 100%;
                     padding: 10px;
-                    border-radius:5px;
-                    margin: 10px 0px;
+                   argin: 10px 0px;
 
-                }
-                 
-                input{
-                        border: 1px solid ${colors.orange};
-                        color: #555;
-                    }
-               
+                } border-radius:5px;
+                    m
             }
             .btn-create {
                 width: 100%;
@@ -123,4 +124,135 @@ export const Container = styled.div`
     }
 
 
+
+    
+
+
+    
+    @media(max-width:1024px){
+    .bainner{
+        display: none;
+    }
+    .contnt-form{
+        flex: 8;
+        color: ${colors.text_color};
+        padding: 0 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .main-content{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 90%;
+            align-items: stretch;
+            justify-content: center;
+            padding: 10px 0;
+            .logo{
+                width: 100%;
+                display: flex;
+                 justify-content: center;
+                 align-items: center;
+                 padding: 10px;
+                 border-bottom: 1px solid #ddd;
+                img{
+                  width: 200px;
+            }
+
+            }
+    }
+}
+    @media(max-width:768px){
+    .bainner{
+        display: none;
+    }
+    .contnt-form{
+        flex: 8;
+        color: ${colors.text_color};
+        padding: 0 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .main-content{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 90%;
+            align-items: stretch;
+            justify-content: center;
+            padding: 10px 0;
+            .logo{
+                width: 100%;
+                display: flex;
+                 justify-content: center;
+                 align-items: center;
+                 padding: 10px;
+                 border-bottom: 1px solid #ddd;
+                img{
+                  width: 200px;
+            }
+
+            }
+    }
+  
+}
+    @media(max-width:630px){
+    .bainner{
+        display: none;
+    }
+    .main-content{
+            .logo{
+                width: 100%;
+                display: flex;
+                 justify-content: center;
+                 align-items: center;
+                 padding: 10px;
+                 border-bottom: 1px solid #ddd;
+                img{
+                  width: 100px;
+            }
+    }
+  }
+}
+    
+
 `
+
+
+export const Loading = styled.div<{ loading: boolean } >`
+   color: ${props => props.loading ? 'white' : 'red'};
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  ${(props) =>
+    props.loading &&
+    css`
+      svg {
+        animation: ${rotate} 1s linear infinite;
+      }
+    `}
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+
+
+

@@ -14,7 +14,7 @@ export const Container = styled.div<{ showMenu: boolean } >`
   display: flex;
   align-items: center;
   justify-content: center;
-  border:1px solid #ddd;
+  border-bottom: 2px solid ${colors.orange};
  z-index:1;
   .header{
     width:98%;
@@ -123,6 +123,7 @@ export const ProfileContent = styled.div`
     .userInfo{
       display:none;
     }
+  }
 `;
 
 export const Menu = styled.div`

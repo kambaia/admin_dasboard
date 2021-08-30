@@ -5,9 +5,9 @@ interface props extends RouteProps {
   component: any
 }
 const PrivateRouter: FC<props> = ({ component: Component, ...rest }) => {
-   const { userId} = useContext(AuthContext);
+   const { user} = useContext(AuthContext);
   return (
-    <Route {...rest} render={props => userId ? <Component {...props} /> : <Redirect to="/" />} />
+    <Route {...rest} render={props => user?.uid ? <Component {...props} /> : <Redirect to="/" />} />
   )
 }
 export default PrivateRouter;

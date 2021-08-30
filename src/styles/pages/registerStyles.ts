@@ -61,18 +61,25 @@ export const Container = styled.div`
             display: flex;
             flex-direction: column;
             width: 100%;
-            max-width: 520px;
+            max-width: 420px;
             align-items: stretch;
             justify-content: center;
             padding: 10px 0;
-            
-           
+            .error-message{
+                    padding: 10px 0;
+                    span{
+                        color: #d00;
+                        font-size: 18px;
+                    }
+                }
             form{
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-             
-                input, button, .btn-create {
+                    .input{
+                        margin: 5px 0px;
+                    }
+                    button, .btn-create {
                     width: 100%;
                     padding: 10px;
                     border-radius:5px;
@@ -80,10 +87,7 @@ export const Container = styled.div`
 
                 }
                  
-                input{
-                        border: 1px solid ${colors.orange};
-                        color: #555;
-                    }
+              
                
             }
             .btn-create {

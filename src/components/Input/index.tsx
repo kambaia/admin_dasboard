@@ -7,15 +7,16 @@ import { Container } from "./styles";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name?: string;
+  border_color?:string
   edit?:boolean;
   onEditeArtist?: (newValue: boolean) => void;
   icon?: React.ComponentType<IconBaseProps>;
 }
-  const Input: React.FC<InputProps> = ({ icon: Icon, onEditeArtist,edit, ...rest }) => {
+  const Input: React.FC<InputProps> = ({ border_color, icon: Icon, onEditeArtist,edit, ...rest }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <Container aria-disabled={true}>
+    <Container aria-disabled={true} style={{border:`1px solid ${border_color}`}}>
       {Icon && <Icon size={20} />}
       <input ref={inputRef} {...rest}/>
       {edit? <span className="" onClick={() =>{
