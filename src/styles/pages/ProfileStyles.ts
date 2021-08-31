@@ -117,7 +117,7 @@ export const CardInformation= styled.div`
             align-items: center;
             justify-content: space-between;
             strong{
-                flex: 4;
+                flex: 2;
             }
             span{
                 margin-left: 10px;
