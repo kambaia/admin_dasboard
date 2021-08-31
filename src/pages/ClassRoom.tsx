@@ -13,8 +13,19 @@ import {
 import CardTeamClass from "../components/CardTeamClass";
 import { CardTeams } from "../styles/pages/ClassRoomStyles";
 import { Button } from "../components/Button";
+import { useEffect } from "react";
+import { getQuestion } from "../services/classRoomServer";
+import { getUserProfile } from "../utils";
 
 const ClassRoom = () => {
+   useEffect(()=>{
+    allQuestion();
+   })
+
+   const allQuestion= async()=>{
+      const res: any = await getQuestion(getUserProfile()?.uid);
+      console.log(res)
+   }
   return (
     <MainContent>
       <Container>

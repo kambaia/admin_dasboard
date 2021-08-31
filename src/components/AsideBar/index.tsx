@@ -5,8 +5,8 @@ import {
   FiUser,
 } from "react-icons/fi";
 import styled from "styled-components";
-import { AiOutlineMenu, AiOutlineWechat, AiOutlinePullRequest} from "react-icons/ai";
-import {FaRegAddressBook, FaBookReader} from "react-icons/fa";
+import { AiOutlineMenu, AiOutlineWechat, AiOutlinePullRequest } from "react-icons/ai";
+import { FaRegAddressBook, FaBookReader } from "react-icons/fa";
 import { Link, useHistory } from 'react-router-dom';
 import { SignOut } from '../../services/authUser';
 import { DatasContext } from "../../config/DataShare/DataProvider";
@@ -39,19 +39,6 @@ const AsideBar: React.FC = () => {
                 <span className="menu-title">Dashboard</span>
               </li>
             </Link>
-            <Link to="/add-sigle">
-              <li className="active">
-                <FaBookReader className="icon__menu" />
-                <span className="menu-title">Livros</span>
-              </li>
-            </Link>
-
-            <Link to="/#">
-              <li className="active">
-                <FaRegAddressBook className="icon__menu" />
-                <span className="menu-title">Exercícios</span>
-              </li>
-            </Link>
 
             <Link to="/classroom">
               <li className="active">
@@ -59,22 +46,36 @@ const AsideBar: React.FC = () => {
                 <span className="menu-title">Salas de Bate Papo</span>
               </li>
             </Link>
-            <Link to="/#">
+
+            <Link to="/exercises">
+              <li className="active">
+                <FaRegAddressBook className="icon__menu" />
+                <span className="menu-title">Exercícios</span>
+              </li>
+            </Link>
+
+            <Link to="/questions">
               <li className="active">
                 <AiOutlinePullRequest className="icon__menu" />
                 <span className="menu-title">Perguntas já feitas</span>
               </li>
             </Link>
+            <Link to="/books">
+              <li className="active">
+                <FaBookReader className="icon__menu" />
+                <span className="menu-title">Livros</span>
+              </li>
+            </Link>
 
 
-            <Link to="/#">
+            <Link to="/profile">
               <li className="active">
                 <FiUser className="icon__menu" />
                 <span className="menu-title">Perfil do usuário</span>
               </li>
             </Link>
 
-         
+
 
             <Link to="#" onClick={() => logOutArtist()}>
               <li className="active">
@@ -92,7 +93,7 @@ const AsideBar: React.FC = () => {
 export default AsideBar;
 
 
-export const Container = styled.div<{showMenu: boolean }>`
+export const Container = styled.div<{ showMenu: boolean }>`
     position: fixed;
     width:  ${props => props.showMenu ? '19vw' : '6vw'};
     min-height:100vh;
@@ -225,7 +226,7 @@ export const Menu = styled.div<{ showMenu: boolean }>`
       }
     .menu-bar{
       cursor: pointer;
-      margin-left: ${props => props.showMenu ? 0: 25}px;
+      margin-left: ${props => props.showMenu ? 0 : 25}px;
     }
 
   @media screen and (max-width:1050px){
