@@ -1,13 +1,14 @@
 import { userAcademy, userInfo, userNacionality } from '../geralTypes';
 import { db } from '../firebase/config'
 
-export const getQuestion = () => {
+export const getQuestion = (id:any) => {
     return new Promise((resolve, reject) => {
+        const question:any= [];
         db.collection('/question').get().then((response) => {
             console.log(response)
             response.forEach(data => {
-                console.log(data)
-                resolve(data.data())
+                question.push(data.data());
+                resolve(question)
             });
             
         }).catch((err) => {
