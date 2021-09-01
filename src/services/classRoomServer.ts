@@ -5,12 +5,47 @@ import { db } from '../firebase/config'
 export const getQuestion = (id: any) => {
     return new Promise(async(resolve, reject) => {
         const question: any = [];
-       const data = await db.collection('/question').onSnapshot(response => {
-            response.docChanges().forEach(data => {
-                question.push(data.doc.data());
-               return resolve(question);
+            const snapshot = await db.collection('/question').where("idUser", "!=", id).get();
+            snapshot.forEach(data => {
+                 question.push({ 
+                    question:data.data()?.question,
+                    about: data.data()?.about,
+                    author: data.data()?.author,
+                    avatar: data.data()?.avatar,
+                    creatAt:  data.data()?.creatAt,
+                    idUser:    data.data()?.idUser,
+                    id: data.id});
             });
+            resolve(question)
         })
+}
+export const getOnlyMyQuestion = (id: any) => {
+    return new Promise(async(resolve, reject) => {
+        const question: any = [];
+        const snapshot = await db.collection('/question').where("idUser", "==", id).get();
+        snapshot.forEach(data => {
+                question.push({ 
+                question:data.data()?.question,
+                about: data.data()?.about,
+                author: data.data()?.author,
+                avatar: data.data()?.avatar,
+                creatAt:  data.data()?.creatAt,
+                idUser:    data.data()?.idUser,
+                id: data.id});
+          
+        });
+        resolve(question)
+    })
+}
+
+export const detailsQuestion = (id: string) => {
+    console.log(id)
+    return new Promise((resolve, reject) => {
+        db.collection('/question').doc(id).get().then((response)=>{
+           console.log(response.data())
+        }).catch((err)=>{
+            reject(err)
+        });
     })
 }
 export const addQuestion = (id:any, question: Question) => {

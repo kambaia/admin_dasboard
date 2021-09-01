@@ -27,7 +27,7 @@ export const CardTeams = styled.div`
   }
 `
 
-export const CardMyQuetions= styled.div`
+export const CardMyQuestions= styled.div`
   .my-question{
     width: 100%;
     display: flex;

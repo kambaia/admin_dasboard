@@ -3,7 +3,7 @@ import { FullContainer } from "../styles/pages/home";
 import { FaYoutube } from "react-icons/fa";
 import { FiLink2, FiUpload } from "react-icons/fi";
 import bainner from "../assets/bainner.svg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { db, storage } from "../firebase/config";
 import {
   MainContent,
@@ -18,6 +18,7 @@ import { getUserProfile } from "../utils";
 import { Question } from "../types/quesionTypes";
 
 const Room = () => {
+  const history = useHistory();
   const [formQ, setFormQ] = useState<Question>({
   idUser: '',
    question:"",
@@ -37,6 +38,7 @@ const Room = () => {
       creatAt: new Date(),
       }
       const res= await addQuestion(getUserProfile()?.uid, questionData);
+      history.push("/classroom");
 }
   return (
     <MainContent>

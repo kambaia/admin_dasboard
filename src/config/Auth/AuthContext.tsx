@@ -4,6 +4,7 @@ import { ModalLoand } from "../../components/Modal";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Loading } from "../../styles/pages/homeStyles";
 import { UserLogged, SignUpUser } from "../../types/types";
+import colors from "../../styles/colors";
 
 type AuthContextType = {
   user: any,
@@ -41,7 +42,7 @@ const AuthProvider: React.FC = ({ children }) => {
       <>
         <ModalLoand open={open} setOpen={setOpen} loading={loading}>
           <Loading loading={true}>
-            <AiOutlineLoading3Quarters size={30} color="#ff2a00" />
+            <AiOutlineLoading3Quarters size={30} color={colors.orange} />
           </Loading>
           <span>A carregar...</span>
         </ModalLoand>

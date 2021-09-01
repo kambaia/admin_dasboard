@@ -5,7 +5,7 @@ import { FaUsers, FaUser, FaFolder } from "react-icons/fa";
 import { Question } from "../../types/quesionTypes";
 
 
-interface Questions {
+interface MyQuestion {
     items?: {
         idUser:string | null | undefined,
         author?: string | null | undefined,
@@ -19,7 +19,7 @@ interface Questions {
     },
 }
 
-const CardTeamClass: FC<Questions> = (props: Questions) => {
+const CardMyQuestion: FC<MyQuestion> = (props: MyQuestion) => {
     return (
         <>
             <Container>
@@ -53,4 +53,4 @@ const CardTeamClass: FC<Questions> = (props: Questions) => {
     );
 };
 
-export default CardTeamClass;
+export default CardMyQuestion;

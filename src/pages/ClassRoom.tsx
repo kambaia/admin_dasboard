@@ -11,28 +11,38 @@ import {
   Wrapper,
 } from "../styles/pages/generalStyles";
 import CardTeamClass from "../components/CardTeamClass";
-import { CardTeams, CardMyQuetions } from "../styles/pages/ClassRoomStyles";
+import CardMyQuestion from "../components/CardMyQuestion";
+import { CardTeams, CardMyQuestions } from "../styles/pages/ClassRoomStyles";
 import { Button } from "../components/Button";
 import { useEffect } from "react";
-import { getQuestion } from "../services/classRoomServer";
+import { getOnlyMyQuestion, getQuestion } from "../services/classRoomServer";
 import { getUserProfile } from "../utils";
 import { Question } from "../types/quesionTypes";
 const ClassRoom = () => {
-      const [question, setQuestion] = useState<any>()
+      const [question, setQuestion] = useState<any>();
+      const [myQuestion, setMyQuestion] = useState<any>()
     
    useEffect(()=>{
     allQuestion();
+    allMyQuestion();
    },[])
  
    const allQuestion= async()=>{
       const data: any = await getQuestion(getUserProfile()?.uid);
       if(data){
+        console.log(data)
         setQuestion(data)
-          console.log("Há nenhum dado desposivel")
-      }else{
-        console.log("Não há nenhum dado desposivel")
       }
    }
+   const allMyQuestion= async()=>{
+    const data: any = await getOnlyMyQuestion(getUserProfile()?.uid);
+    if(data){
+      setMyQuestion(data)
+        console.log("Há nenhum dado desposivel")
+    }else{
+      console.log("Não há nenhum dado desposivel")
+    }
+ }
 
   
   return (
@@ -43,7 +53,7 @@ const ClassRoom = () => {
            <h2>Todas as salas disponíveis</h2>
            </div>
              <Button><Link to="/room">Criar a sua sala</Link></Button>
-           {console.log(question)}
+          
         </CardHeader>
         <Wrapper>
           <CardTeams>
@@ -65,16 +75,15 @@ const ClassRoom = () => {
              </div>
         </Wrapper>
         <Wrapper>
-            <CardMyQuetions>
+            <CardMyQuestions>
             <div className="my-question">
                   {
-                    question?.map((item:any, index:number)=>
-                    <CardTeamClass items={item}/>
-                    
+                    myQuestion?.map((item:any, index:number)=>
+                    <CardMyQuestion items={item}/>
                     )
                   }
              </div>
-            </CardMyQuetions>
+            </CardMyQuestions>
         </Wrapper>
       </Container>
     </MainContent>
