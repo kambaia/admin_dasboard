@@ -7,7 +7,7 @@ export const CardContent = styled.div`
    display: flex;
    justify-content: space-between;
    flex-direction: row;
-   height: 80vh;
+   
 `
 
 
@@ -22,37 +22,16 @@ export const ContentWrapper = styled.div`
 
 export const ProfileStudante = styled.div`
     width: 35%;
-    height: 55vh;
+    height: auto;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
     padding-bottom: 40px;
+    padding-top:20px;
     box-shadow: 1px 0px 4px 0px rgba(0,0,0,0.3);
-    .profile-avatar{
-        width: 80%;
-        padding: 30px 20px;
-        .avatar{
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0px;
-    
-            img{
-                width: 100%;
-                height: 100%;
-                border-radius: 50%;
-            }
-        }
-        .profile-name{
-            padding: 10px;
-        }
-    }
-
+    border: 1px solid #d00;
+   
     .info-estudent{
         width: 90%;
         li{
@@ -147,5 +126,74 @@ export const CardInformation= styled.div`
             }
         }
 `
-    
+export const TextInputGroup = styled.figure`
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      .firstname{
+        width: 100%;
+        padding: 10px;
+        background-color: #fff;
+      }
+       .text-input, .selectContainer{
+         width: 50%;
+         padding: 10px;
+       }
+       .checkbox{
+           label input:checked + span{
+             color: #00d;
+           }
+       }
+
+  `
+  export const InputSelect = styled.input`
+  border: 0;
+`;
+
+export const ProfileAvatar = styled.section`
+     border: 1px solid #ff2a00;
+     width: 90%;
+     margin: auto;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction:column;
+     .cover{
+         width: 140px;
+         height: 140px;
+         border-radius: 50%;
+         box-shadow: 1px 0px 10px rgba(0,0,0,0.6);
+     }
+     .select-music{
+      width:90%;
+      margin:10px 0px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      background-color: #ff2a00;
+
+      &:hover {
+        opacity: 0.7;
+      }
+     }
+     label#foto {
+      bottom:0px;
+      width: 100%;
+      cursor: pointer;
+      display: flex;
+      padding: 8px;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      
+    }
+    label#foto input {
+      display: none;
+    }
+    label#foto.remove-elemet .icon {
+      display: none;
+    }
+    label#foto.remove-elemet {
+      border: 0;
+    }
+   `;
   

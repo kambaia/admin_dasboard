@@ -12,6 +12,7 @@ export const MainContent = styled.div`
 `;
 export const Container = styled.main`
   width: 100%;
+  height: auto;
 `;
 export const CardHeader = styled.div`
   background-color: ${colors.white};
@@ -34,6 +35,7 @@ export const CardHeader = styled.div`
 export const Wrapper = styled.section`
   background-color: ${colors.white};
   width: 98%;
+  height: auto;
   margin: 1% auto;
   z-index: 0;
   box-shadow: 0 1px 2px 0px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
