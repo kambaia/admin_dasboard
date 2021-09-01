@@ -1,4 +1,4 @@
-import {SignUpUser, SignInData, UserLogged} from './types'
+import {SignUpUser, SignInData, UserLogged} from '../types/types'
 import firebase, {db, auth} from '../firebase/config'
 export const createAccount = (data: SignUpUser, loginUser: SignInData) => {
     return new Promise((resolve, reject) => {

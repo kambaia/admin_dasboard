@@ -9,6 +9,7 @@ export const Container = styled.div`
      flex-direction: column;
      margin-left: 20px;
      margin-right: 20px;
+     margin-top:15px;
      border-radius: 10px;
      flex: none;
      a{
@@ -46,10 +47,20 @@ export const Container = styled.div`
             border-radius: 50%;
             width: 50px;
             height: 50px;
-            background-color: #d0d;
+            z-index: 9;
+            padding: 10px;
+            border: 4px solid #ddd;
             display: flex;
             justify-content: center;
             align-items: center; 
+
+            img{
+              width: 100%;
+              z-index: 1;
+              width: 45px;
+              height: 45px;
+              border-radius: 50%;
+            }
          }
        }
      }

@@ -1,26 +1,22 @@
-import { userAcademy, userInfo, userNacionality } from '../geralTypes';
+import { userAcademy, userInfo, userNacionality } from '../types/geralTypes';
+import { Question, Answers} from '../types/quesionTypes';
 import { db } from '../firebase/config'
 
-export const getQuestion = (id:any) => {
-    return new Promise((resolve, reject) => {
-        const question:any= [];
-        db.collection('/question').get().then((response) => {
-            console.log(response)
-            response.forEach(data => {
-                question.push(data.data());
-                resolve(question)
+export const getQuestion = (id: any) => {
+    return new Promise(async(resolve, reject) => {
+        const question: any = [];
+       const data = await db.collection('/question').onSnapshot(response => {
+            response.docChanges().forEach(data => {
+                question.push(data.doc.data());
+               return resolve(question);
             });
-            
-        }).catch((err) => {
-            reject(err)
-        });
+        })
     })
 }
-
-export const addQuestion = (id: any) => {
+export const addQuestion = (id:any, question: Question) => {
     return new Promise((resolve, reject) => {
-        db.collection('question').add(id).then((response) => {
-         
+        db.collection('/question').add(question).then((response)=>{
+                console.log(response)
         }).catch((err) => {
             reject(err)
         });

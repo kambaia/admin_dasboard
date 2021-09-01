@@ -1,4 +1,4 @@
-import { userAcademy, userInfo, userNacionality } from '../geralTypes';
+import { userAcademy, userInfo, userNacionality } from '../types/geralTypes';
 import { db } from '../firebase/config'
 export const getUser = (id: any) => {
     return new Promise((resolve, reject) => {
@@ -19,8 +19,6 @@ export const updateUser = (id: any, data: userInfo) => {
         });
     })
 }
-
-
 export const upDateAcademyUser = (id: any, academy: userAcademy) => {
     const data = {
         academy: academy,

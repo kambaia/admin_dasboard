@@ -3,7 +3,7 @@ import firebase, { auth, db } from "../../firebase/config";
 import { ModalLoand } from "../../components/Modal";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Loading } from "../../styles/pages/homeStyles";
-import { UserLogged, SignUpUser } from "../../services/types";
+import { UserLogged, SignUpUser } from "../../types/types";
 
 type AuthContextType = {
   user: any,

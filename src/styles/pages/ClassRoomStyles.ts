@@ -26,5 +26,17 @@ export const CardTeams = styled.div`
     }
   }
 `
+
+export const CardMyQuetions= styled.div`
+  .my-question{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    min-height: 400px;
+    overflow-y: auto;
+    margin-top:20px;
+  }
+`
     
   

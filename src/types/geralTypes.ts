@@ -21,7 +21,6 @@ export type userNacionality = {
     county: string,
     province: string,
     neighborhood: string
-
 }
 
 export type userAcademy = {

@@ -13,8 +13,31 @@ import {
 } from "../styles/pages/generalStyles";
 import { CardChat, CardForm } from "../styles/pages/RoomStyles";
 import { Button } from "../components/Button";
+import { addQuestion, getQuestion } from "../services/classRoomServer";
+import { getUserProfile } from "../utils";
+import { Question } from "../types/quesionTypes";
 
 const Room = () => {
+  const [formQ, setFormQ] = useState<Question>({
+  idUser: '',
+   question:"",
+   about:'',
+   avatar:'',
+   author:'',
+   creatAt: new Date(),
+  })
+  const onSubmitQuestion = async(e:any)=>{
+    e.preventDefault();
+    const questionData:Question = {
+      author: getUserProfile()?.displayName,
+      avatar: getUserProfile()?.photoURL,
+      about: formQ?.about,
+      question:formQ?.question,
+      idUser: getUserProfile()?.uid,
+      creatAt: new Date(),
+      }
+      const res= await addQuestion(getUserProfile()?.uid, questionData);
+}
   return (
     <MainContent>
       <Container>
@@ -28,17 +51,17 @@ const Room = () => {
         </CardHeader>
         <Wrapper>
           <CardForm>
-            <form>
+         
               <div className="question">
                 <section id="section-home">
                   <div className="header-questions">
                     <h2>Faça aqui a questão para debateres com o pessoal</h2>
                     <div className="form-questions">
-                      <form>
+                      <form onSubmit={onSubmitQuestion}>
                         <label htmlFor="" className="sr-only">
                           Selecione o questão
                         </label>
-                        <select>
+                        <select onChange={(e)=>setFormQ({...formQ, about: e.target.value })}>
                           <option>Questão Relacionada com?</option>
                           <option>Matemática</option>
                           <option>Física</option>
@@ -56,12 +79,11 @@ const Room = () => {
                         <label htmlFor="" className="sr-only">
                           O que é a questão número 1
                         </label>
-                        <textarea placeholder="Digite aqui a questão do grupo em questão"></textarea>
-                        
+                        <textarea placeholder="Digite aqui a questão do grupo em questão" onChange={(e)=>setFormQ({...formQ, question: e.target.value })}></textarea>
                         <footer>
                           <div className="btn-question">
                             <span>...</span>
-                            <Button>Atribuir o desafio</Button>
+                            <Button onSubmit={onSubmitQuestion}>Atribuir o desafio</Button>
                           </div>
                         </footer>
                       </form>
@@ -80,7 +102,7 @@ const Room = () => {
                   </div>
                 </section>
               </div>
-            </form>
+          
           </CardForm>
         </Wrapper>
       </Container>

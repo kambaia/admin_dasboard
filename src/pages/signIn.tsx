@@ -9,7 +9,7 @@ import { Container, Loading } from "../styles/pages/loginStyles";
 import bainner from "../assets/bainner.svg";
 import { Button } from "../components/Button";
 import colors  from '../styles/colors';
-import { SignUpUser } from "../services/types";
+import { SignUpUser } from "../types/types";
 import Input from "../components/Input";
 import { loginAccount} from "../services/authUser";
 

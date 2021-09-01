@@ -2,21 +2,36 @@ import React, { FC, useState, useContext } from "react";
 import { Link } from 'react-router-dom'
 import { Container } from "./styles";
 import { FaUsers, FaUser, FaFolder } from "react-icons/fa";
-const CardTeamClass: FC = () => {
+import { Question } from "../../types/quesionTypes";
 
+
+interface Questions {
+    items?: {
+        idUser:string | null | undefined,
+        author?: string | null | undefined,
+        avatar?: string | null | undefined,
+        about: string,
+        question: string,
+        validate?: [],
+        validateMaster?:[],
+        creatAt:any  
+    },
+}
+
+const CardTeamClass: FC<Questions> = (props: Questions) => {
     return (
         <>
             <Container>
                 <Link to="#">
                     <div className="header">
                         <div className="info-team">
-                            <h2>Fisica geral 1</h2>
-                            <p>Materias relacionada ao 2 ano</p>
-                            <p>Kambaia Alberto</p>
+                            <h2>{props.items?.about}</h2>
+                            <p>{props.items?.question}</p>
+                            <p>{props.items?.author}</p>
                         </div>
                         <div className="img-team">
                             <div className="avatar">
-                                <span><FaUser size={30} /></span>
+                                <span><img src={props.items?.avatar!}/></span>
                             </div>
                         </div>
                     </div>
