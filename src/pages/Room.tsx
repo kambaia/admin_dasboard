@@ -15,11 +15,11 @@ import { CardChat, CardForm } from "../styles/pages/RoomStyles";
 import { Button } from "../components/Button";
 import { addQuestion, getQuestion } from "../services/classRoomServer";
 import { getUserProfile } from "../utils";
-import { Question } from "../types/quesionTypes";
+import { QuestionTypes } from "../types/quesionTypes";
 
 const Room = () => {
   const history = useHistory();
-  const [formQ, setFormQ] = useState<Question>({
+  const [formQ, setFormQ] = useState<QuestionTypes>({
   idUser: '',
    question:"",
    about:'',
@@ -29,7 +29,7 @@ const Room = () => {
   })
   const onSubmitQuestion = async(e:any)=>{
     e.preventDefault();
-    const questionData:Question = {
+    const questionData:QuestionTypes = {
       author: getUserProfile()?.displayName,
       avatar: getUserProfile()?.photoURL,
       about: formQ?.about,
