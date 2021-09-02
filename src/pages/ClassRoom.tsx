@@ -17,7 +17,6 @@ import { Button } from "../components/Button";
 import { useEffect } from "react";
 import { getOnlyMyQuestion, getQuestion } from "../services/classRoomServer";
 import { getUserProfile } from "../utils";
-import { Question } from "../types/quesionTypes";
 const ClassRoom = () => {
       const [question, setQuestion] = useState<any>();
       const [myQuestion, setMyQuestion] = useState<any>()

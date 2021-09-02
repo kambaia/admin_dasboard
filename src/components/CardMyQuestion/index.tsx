@@ -2,9 +2,6 @@ import React, { FC, useState, useContext } from "react";
 import { Link } from 'react-router-dom'
 import { Container } from "./styles";
 import { FaUsers, FaUser, FaFolder } from "react-icons/fa";
-import { Question } from "../../types/quesionTypes";
-
-
 interface MyQuestion {
     items?: {
         idUser:string | null | undefined,
