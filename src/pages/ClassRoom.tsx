@@ -17,6 +17,8 @@ import { Button } from "../components/Button";
 import { useEffect } from "react";
 import { getOnlyMyQuestion, getQuestion } from "../services/classRoomServer";
 import { getUserProfile } from "../utils";
+import { ModalLoand } from "../components/Modal";
+import { Modal } from "../components/Modal/ModalAlert";
 const ClassRoom = () => {
       const [question, setQuestion] = useState<any>();
       const [myQuestion, setMyQuestion] = useState<any>()
@@ -45,6 +47,7 @@ const ClassRoom = () => {
 
   
   return (
+    <>
     <MainContent>
       <Container>
         <CardHeader style={{display:'flex', justifyContent:'space-between'}}>
@@ -86,6 +89,8 @@ const ClassRoom = () => {
         </Wrapper>
       </Container>
     </MainContent>
+   <Modal/>
+   </>
   );
 };
 

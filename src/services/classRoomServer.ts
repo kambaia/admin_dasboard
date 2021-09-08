@@ -120,8 +120,6 @@ export const allAnswerQuestion = (idQuestion: string) => {
             });
         })
 }
-
-
 export const allAnswerCommits = (questionId:string,idAnswer: string) => {
     return new Promise((resolve, reject) => {
         const question: any = [];
