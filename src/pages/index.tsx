@@ -8,6 +8,7 @@ import Dashboard from "./home";
 import ListExercise from "./ListExercise";
 import Profile from "./Profile";
 import Questions from "./Questions";
+import Question from "./Question";
 import Room from "./Room";
 
 
@@ -21,7 +22,6 @@ export default () => (
     <PrivateRouter exact path="/exercises/list" component={ListExercise} />
     <PrivateRouter exact path="/books" component={Books} />
     <PrivateRouter exact path="/questions" component={Questions} />
-
-
+    <PrivateRouter exact path="/classroom/question/:id" component={Question} />
     </>
 );

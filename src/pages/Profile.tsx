@@ -11,7 +11,7 @@ import { CardContent, ContentWrapper, ProfileStudante, CardInformation } from ".
 import { Button } from "../components/Button";
 import { getUser, upDateAcademyUser, upDateNacionality, updateUser } from '../services/profilesServer';
 import { getUserProfile } from '../utils';
-import { userAcademy, userNacionality, userInfo} from '../geralTypes'
+import { userAcademy, userNacionality, userInfo} from '../types/geralTypes'
 const Profile = () => {
     const [userData, setUserData] = useState<userInfo>({
         access: 1,

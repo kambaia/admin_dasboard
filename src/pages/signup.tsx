@@ -3,6 +3,7 @@ import { FiLock, FiUser, FiAtSign } from "react-icons/fi";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import logo from "../assets/logo.png";
 import { Link, useHistory } from "react-router-dom";
+import {onAuthStateChanged} from 'firebase/auth';
 import { Container } from "../styles/pages/registerStyles";
 import bainner from "../assets/registraBainner.svg";
 import { Button } from "../components/Button";
@@ -24,10 +25,10 @@ const SignUp = () => {
     email: "", password: ""
   });
   useEffect(() => {
-    const user = auth().onAuthStateChanged(async (user) => {
-      if (user?.uid) {
-        history.push("/dashboard");
-      }
+	const user = onAuthStateChanged(auth, user => {
+		if (user?.uid && user.email) {
+		  history.push("/dashboard");
+		}
     });
     return () => {
       user();

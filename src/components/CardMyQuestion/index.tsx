@@ -2,8 +2,7 @@ import React, { FC, useState, useContext } from "react";
 import { Link } from 'react-router-dom'
 import { Container } from "./styles";
 import { FaUsers, FaUser, FaFolder } from "react-icons/fa";
-
-interface Questions {
+interface MyQuestion {
     items?: {
         idUser:string | null | undefined,
         author?: string | null | undefined,
@@ -17,7 +16,7 @@ interface Questions {
     },
 }
 
-const CardTeamClass: FC<Questions> = (props: Questions) => {
+const CardMyQuestion: FC<MyQuestion> = (props: MyQuestion) => {
     return (
         <>
             <Container>
@@ -51,4 +50,4 @@ const CardTeamClass: FC<Questions> = (props: Questions) => {
     );
 };
 
-export default CardTeamClass;
+export default CardMyQuestion;

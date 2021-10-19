@@ -1,12 +1,11 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-import 'firebase/firebase-storage';
-import 'firebase/database';
-
-firebase.initializeApp({
+import { initializeApp} from 'firebase/app';
+import { getFirestore} from 'firebase/firestore';
+import { getAuth} from 'firebase/auth';
+import {getStorage} from 'firebase/storage'
+const firebaseConfig = ({
   apiKey: "AIzaSyDn7Q7uMM-rBukrUFlFL4eHoEZmwD-hPO8",
   authDomain: "tullingkueto.firebaseapp.com",
+  databaseURL: "tullingkueto.firebaseio.com",
   projectId: "tullingkueto",
   storageBucket: "tullingkueto.appspot.com",
   messagingSenderId: "780350146422",
@@ -14,10 +13,10 @@ firebase.initializeApp({
   measurementId: "G-TTGBXVSC4B"
 });
 
-const db = firebase.firestore();
-const auth = firebase.auth;
-const storage = firebase.storage();
-const dbRealTime = firebase.database();
+const app= initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+const storage = getStorage(app);
 
-export default firebase;
-export {firebase, auth, db, storage};
+
+export {db, auth, storage}
