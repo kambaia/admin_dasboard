@@ -34,6 +34,7 @@ export const CardTeams = styled.div`
 
 export const ContentAddQuestions= styled.div`
    position: relative;
+   z-index: 1;
 
   .sr-only {
     position: absolute;
@@ -126,6 +127,8 @@ export const ContentAddQuestions= styled.div`
         display: flex;
         flex-direction: row;
         border-top: 1px solid #ddd;
+		background-color: #f00;
+	
         div{
             width: 50px;
             height: 50px;
@@ -134,6 +137,7 @@ export const ContentAddQuestions= styled.div`
             justify-content: center;
             align-items: center;
             margin: 10px;
+			
             span{
                 font-size: 20px;
             }

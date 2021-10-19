@@ -23,10 +23,5 @@ export default () => (
     <PrivateRouter exact path="/books" component={Books} />
     <PrivateRouter exact path="/questions" component={Questions} />
     <PrivateRouter exact path="/classroom/question/:id" component={Question} />
-
-
-    
-
-
     </>
 );

@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import firebase, { auth, db } from "../../firebase/config";
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { ModalLoand } from "../../components/Modal";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Loading } from "../../styles/pages/homeStyles";
@@ -15,13 +15,13 @@ interface Loading {
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
+const auth = getAuth()
 const AuthProvider: React.FC = ({ children }) => {
   const [user, setUser] = useState<any>();
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(true);
-
   useEffect(() => {
-    const unsubscribe = auth().onAuthStateChanged(user=> {
+    const unsubscribe = onAuthStateChanged(auth, user=> {
        if(user){
           const { uid, phoneNumber, photoURL, displayName} = user;
           if (!displayName) {

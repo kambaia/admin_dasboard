@@ -5,7 +5,7 @@ export interface Props {
   open?: boolean;
   setShowFindArtist?: (newValue: boolean) => void;
   setOpen?: (newValue: boolean) => void;
-  setClearForm?: (newValue: boolean) => void;
+  setClearForm: (newValue: boolean) => void;
   width?: number | any;
   heigth?: number | any;
   loading?: boolean,
@@ -15,13 +15,14 @@ export const Modal: React.FC<Props> = ({
   children,
   loading = true,
   width= 40,
+  setClearForm,
   ...props
 }) => {
   return (
     <FullScreenModal>
          <div className="card-modal" style={{width: `${width}%`}}>
          <Close>
-              <div className="close"></div>
+              <div className="close" onClick={()=>setClearForm(false)}></div>
          </Close>
             {children}
          </div>
@@ -58,6 +59,8 @@ const Close = styled.div`
     align-items:center;
     justify-content: flex-end;
     font-size: 25px;
+	z-index: 2;
+
     .close{
         background-color: transparent;
         outline: none;
@@ -69,6 +72,9 @@ const Close = styled.div`
         align-items: center;
         opacity: 1;
         cursor: pointer;
+		:hover{
+          opacity:.5;
+        }
 
         &:before, &:after{
             content: '';
@@ -83,8 +89,6 @@ const Close = styled.div`
         &:after{
             transform: rotate(-45deg);
         }
-        :hover{
-          opacity:.5;
-        }
+       
     }
 `

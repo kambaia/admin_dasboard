@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { FiLock, FiMail } from "react-icons/fi";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import {onAuthStateChanged, signInWithRedirect, updateProfile, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import logo from "../assets/logo.png";
-import firebase, { auth, db } from "../firebase/config";
+import { auth, db} from "../firebase/config";
+import { collection, doc, setDoc, Timestamp} from 'firebase/firestore'
 import { FcGoogle } from "react-icons/fc";
 import { Container, Loading } from "../styles/pages/loginStyles";
 import bainner from "../assets/bainner.svg";
@@ -20,7 +22,7 @@ const SignIn = () => {
   const [errorLogin, setErrcorLogin] = useState<any>();
 
   useEffect(() => {
-    const user = auth().onAuthStateChanged(async (user) => {
+    const user = onAuthStateChanged(auth, user => {
       if (user?.uid && user.email) {
         history.push("/dashboard");
       }
@@ -31,13 +33,11 @@ const SignIn = () => {
   }, []);
 
   const signWithGoogle = async () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    const result = await auth().signInWithPopup(provider);
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
     if (result.user) {
       const { displayName, photoURL, uid } = result.user;
-      const response = await db.collection("/users").doc(uid).get();
-      if (response.data() === undefined) {
-        const userData: SignUpUser = {
+        let userData: SignUpUser = {
           fullName: displayName,
           phoneNumber: "",
           type: "user",
@@ -45,19 +45,14 @@ const SignIn = () => {
           active: false,
           access: 1,
           id: uid,
-          creatAt: firebase.firestore.FieldValue.serverTimestamp(),
+          creatAt: Timestamp.fromDate(new Date()),
         };
-        const resultUser = await db.collection("/users").doc(uid).set(userData);
-        result.user?.updateProfile({
-          displayName: displayName,
-        });
-      }
-      if (!displayName || !photoURL) {
-        throw new Error("Missing information from Google Account.");
+		const userRef = doc(db, 'users', uid);
+		setDoc(userRef, userData, { merge: true }).then(res=>{
+             console.log(res);
+		}).catch(console.log);
       }
     }
-  };
-
   const accessWithAcount = async (e:any) => {
     e.preventDefault();
     if(!form.email || !form.password){

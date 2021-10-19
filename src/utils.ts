@@ -1,6 +1,6 @@
-import firebase from './firebase/config';
+import { auth,  } from "./firebase/config";
 export const getUserProfile = () => {
-  return firebase.auth().currentUser;
+  return auth.currentUser; // null if no user
 }
 
 export const formaTime = (secs:any) => {

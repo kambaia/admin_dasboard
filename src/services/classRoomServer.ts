@@ -4,24 +4,14 @@ import { db } from '../firebase/config'
 export const getQuestion = (id: any) => {
     return new Promise(async(resolve, reject) => {
         const question: any = [];
-            const snapshot = await db.collection('/question').where("idUser", "!=", id).get();
-            snapshot.forEach(data => {
-                 question.push({ 
-                    question:data.data()?.question,
-                    about: data.data()?.about,
-                    author: data.data()?.author,
-                    avatar: data.data()?.avatar,
-                    creatAt:  data.data()?.creatAt,
-                    idUser:    data.data()?.idUser,
-                    id: data.id});
-            });
+          
             resolve(question)
         })
 }
 export const getOnlyMyQuestion = (id: any) => {
     return new Promise(async(resolve, reject) => {
         const question: any = [];
-        const snapshot = await db.collection('/question').where("idUser", "==", id).get();
+        /*const snapshot = await db.collection('/question').where("idUser", "==", id).get();
         snapshot.forEach(data => {
                 question.push({ 
                 question:data.data()?.question,
@@ -33,33 +23,36 @@ export const getOnlyMyQuestion = (id: any) => {
                 id: data.id});
           
         });
+		*/
         resolve(question)
     })
 }
 
 export const detailsQuestion = (id: string) => {
     return new Promise((resolve, reject) => {
-        db.collection('/question').doc(id).get().then((response)=>{
+        /*db.collection('/question').doc(id).get().then((response)=>{
          resolve(response.data())
         }).catch((err)=>{
             reject(err)
         });
+		*/
     })
 }
 
 export const addQuestion = (id:any, question: QuestionTypes) => {
     return new Promise((resolve, reject) => {
-        db.collection('/question').add(question).then((response)=>{
+        /*db.collection('/question').add(question).then((response)=>{
                
         }).catch((err) => {
             reject(err)
         });
+		*/
     })
 }
 
 export const answerAddQuestion = (idQuestion: string, data:AnswersTypes) => {
     return new Promise((resolve, reject) => {
-        var questionRef =
+       /* var questionRef =
             db.collection('/question').doc(idQuestion)
               .collection('/answer');
             questionRef
@@ -71,12 +64,14 @@ export const answerAddQuestion = (idQuestion: string, data:AnswersTypes) => {
                 console.error('Error adding document: ', error);
                 resolve({addmessa: true});
             });
+			*/
+			resolve({addmessa: true});
         })
 }
 
 export const answerAddCommentting = (questionId:string,idAnswer: string, data:CommentsTypes) => {
     return new Promise((resolve, reject) => {
-        console.log(idAnswer);
+		/*
         var questionRef =
             db.collection('/question').doc(questionId)
             .collection('/answer').doc(idAnswer)
@@ -90,6 +85,7 @@ export const answerAddCommentting = (questionId:string,idAnswer: string, data:Co
                 console.error('Error adding document: ', error);
                 resolve({addmessa: true});
             });
+			*/
         })
 }
 
@@ -98,6 +94,7 @@ export const answerAddCommentting = (questionId:string,idAnswer: string, data:Co
 export const allAnswerQuestion = (idQuestion: string) => {
     return new Promise((resolve, reject) => {
         const question: any = [];
+		/*
         var questionRef =
             db.collection('/question').doc(idQuestion)
               .collection('/answer');
@@ -118,12 +115,13 @@ export const allAnswerQuestion = (idQuestion: string) => {
                 console.error('Error adding document: ', error);
                 resolve({addmessa: true});
             });
+				*/
         })
 }
 export const allAnswerCommits = (questionId:string,idAnswer: string) => {
     return new Promise((resolve, reject) => {
         const question: any = [];
-        var questionRef =
+        /*var questionRef =
             db.collection('/question').doc(questionId)
               .collection('/answer').doc(idAnswer)
               .collection('/comments');
@@ -145,6 +143,8 @@ export const allAnswerCommits = (questionId:string,idAnswer: string) => {
                 console.error('Error adding document: ', error);
                 resolve({addmessa: true});
             });
+			*/
         })
+		
 }
 
