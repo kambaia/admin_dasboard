@@ -1,5 +1,6 @@
 
 export type SignUpUser={
+	account: {email:string | undefined | null, studentNumber: number }
     fullName: string | undefined | null,
     access: number,
     profilePhoto?: string | undefined | null,

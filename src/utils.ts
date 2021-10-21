@@ -8,3 +8,11 @@ export const formaTime = (secs:any) => {
   let seconds = Math.round(secs) - minute * 60 || 0;
   return (minute + ":" + (Math.round(seconds) <10 ? "0" : "") + Math.round(seconds))
 };
+
+export const onlyNumber= (number: any)=> {
+	var numsStr = number.replace(/[^0-9]/g, '');
+	return parseInt(numsStr);
+}
+export const onlyLetters = (letter: any)=> {
+return letter.replace(/[^a-zA-Z]+/g, ' ');
+}

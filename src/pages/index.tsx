@@ -10,11 +10,14 @@ import Profile from "./Profile";
 import Questions from "./Questions";
 import Question from "./Question";
 import Room from "./Room";
+import EditProfile from "./editProfile";
+import SuccessCreateAccount from "./SuccessCreateAccount";
 
 
 export default () => (
     <>
     <PrivateRouter exact path="/dashboard" component={Dashboard} />
+	<PrivateRouter exact path="/edit-profile-study" component={EditProfile} />
     <PrivateRouter exact path="/classroom" component={ClassRoom} />
     <PrivateRouter exact path="/room" component={Room} />
     <PrivateRouter exact path="/profile" component={Profile} />
@@ -23,5 +26,6 @@ export default () => (
     <PrivateRouter exact path="/books" component={Books} />
     <PrivateRouter exact path="/questions" component={Questions} />
     <PrivateRouter exact path="/classroom/question/:id" component={Question} />
+	<PrivateRouter exact path="/auth/account-active-success"  component={SuccessCreateAccount} />
     </>
 );

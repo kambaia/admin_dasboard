@@ -27,11 +27,6 @@ export const CardTeams = styled.div`
   }
 
 `
-
-
-
-
-
 export const ContentAddQuestions= styled.div`
    position: relative;
    z-index: 1;

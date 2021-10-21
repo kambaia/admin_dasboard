@@ -1,93 +1,105 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
-  FiLogOut,
-  FiGrid,
-  FiUser,
+	FiLogOut,
+	FiGrid,
+	FiUser,
 } from "react-icons/fi";
 import styled from "styled-components";
 import { AiOutlineMenu, AiOutlineWechat, AiOutlinePullRequest } from "react-icons/ai";
 import { FaRegAddressBook, FaBookReader } from "react-icons/fa";
 import { Link, useHistory } from 'react-router-dom';
-import { SignOut } from '../../services/authUser';
+import { getUser, SignOut } from '../../services/authUser';
 import { DatasContext } from "../../config/DataShare/DataProvider";
 import logo from '../../assets/logo.png';
 import colors from "../../styles/colors";
+import { userAcademy, userNacionality, userInfo } from '../../types/geralTypes'
+import { getUserProfile } from "../../utils";
 const AsideBar: React.FC = () => {
-  const history = useHistory();
-  const { showMenu, setShowMenu } = useContext(DatasContext);
-  const logOutArtist = () => {
-    SignOut();
-    history.push('/');
-  }
-  function onShowShMenu(e: any) {
-    e.preventDefault();
-    setShowMenu(!showMenu);
-  }
-  return (
-    <>
-      <Container showMenu={showMenu!}>
-        <Menu showMenu={showMenu}>
-          <img style={{ display: showMenu ? 'block' : 'none' }} src={logo} alt="Toqueplay Logo" />
-          <div onClick={onShowShMenu} className="menu-bar"><AiOutlineMenu size={25} className="icon__menu" /></div>
-        </Menu >
-        <div className="menu-options">
-          {console.log(showMenu)}
-          <ul>
-            <Link to="/dashboard">
-              <li className="active">
-                <FiGrid className="icon__menu" />
-                <span className="menu-title">Dashboard</span>
-              </li>
-            </Link>
+	const history = useHistory();
+	const { showMenu, setShowMenu } = useContext(DatasContext);
+	const [userInfo, setUserInfo] = useState<userInfo>();
+	useEffect(() => {
+		VerifyUser();
+	}, []);
 
-            <Link to="/classroom">
-              <li className="active">
-                <AiOutlineWechat className="icon__menu" />
-                <span className="menu-title">Salas de Bate Papo</span>
-              </li>
-            </Link>
+	const logOutArtist = () => {
+		SignOut();
+		history.push('/');
+	}
+	function onShowShMenu(e: any) {
+		e.preventDefault();
+		setShowMenu(!showMenu);
+	}
+	const VerifyUser = async () => {
+		const user: any = await getUser(getUserProfile()?.uid);
+		setUserInfo(user);
+	}
+	return (
+		<>
+			<Container showMenu={showMenu!}>
+				<Menu showMenu={showMenu}>
+					<img style={{ display: showMenu ? 'block' : 'none' }} src={logo} alt="Toqueplay Logo" />
+					<div onClick={onShowShMenu} className="menu-bar"><AiOutlineMenu size={25} className="icon__menu" /></div>
+				</Menu >
+				<div className="menu-options">
+					<ul>
+						<Link to="/dashboard">
+							<li className="active">
+								<FiGrid className="icon__menu" />
+								<span className="menu-title">Dashboard</span>
+							</li>
+						</Link>
+						{
+							userInfo?.active?
+								<>
+									<Link to="/classroom">
+										<li className="active">
+											<AiOutlineWechat className="icon__menu" />
+											<span className="menu-title">Salas de Bate Papo</span>
+										</li>
+									</Link>
 
-            <Link to="/exercises">
-              <li className="active">
-                <FaRegAddressBook className="icon__menu" />
-                <span className="menu-title">Exercícios</span>
-              </li>
-            </Link>
+									<Link to="/exercises">
+										<li className="active">
+											<FaRegAddressBook className="icon__menu" />
+											<span className="menu-title">Exercícios</span>
+										</li>
+									</Link>
 
-            <Link to="/questions">
-              <li className="active">
-                <AiOutlinePullRequest className="icon__menu" />
-                <span className="menu-title">Perguntas já feitas</span>
-              </li>
-            </Link>
-            <Link to="/books">
-              <li className="active">
-                <FaBookReader className="icon__menu" />
-                <span className="menu-title">Livros</span>
-              </li>
-            </Link>
+									<Link to="/questions">
+										<li className="active">
+											<AiOutlinePullRequest className="icon__menu" />
+											<span className="menu-title">Perguntas já feitas</span>
+										</li>
+									</Link>
+									<Link to="/books">
+										<li className="active">
+											<FaBookReader className="icon__menu" />
+											<span className="menu-title">Livros</span>
+										</li>
 
+									</Link>
+								</>
+								: null
+						}
+						<Link to="/profile">
+							<li className="active">
+								<FiUser className="icon__menu" />
+								<span className="menu-title">Perfil do usuário</span>
+							</li>
+						</Link>
 
-            <Link to="/profile">
-              <li className="active">
-                <FiUser className="icon__menu" />
-                <span className="menu-title">Perfil do usuário</span>
-              </li>
-            </Link>
-
-
-
-            <Link to="#" onClick={() => logOutArtist()}>
-              <li className="active">
-                <FiLogOut className="icon__menu" />
-                <span className="menu-title">Sair</span>
-              </li>
-            </Link>
-          </ul>
-        </div>
-      </Container>
-    </>
-  );
+						<Link to="#" onClick={() => logOutArtist()}>
+							<li className="active">
+								<FiLogOut className="icon__menu" />
+								<span className="menu-title">Sair</span>
+							</li>
+						</Link>
+					</ul>
+				</div>
+			</Container>
+		</>
+	);
 };
 
 export default AsideBar;

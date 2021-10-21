@@ -58,7 +58,7 @@ export const Container = styled.div`
                 display: flex;
                  justify-content: center;
                  align-items: center;
-                 padding: 10px;
+                 padding: 20px;
                  border-bottom: 1px solid #ddd;
                 img{
                   width: 100px;
@@ -71,21 +71,29 @@ export const Container = styled.div`
                         font-size: 18px;
                     }
                 }
-            form{
+            .form{
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                margin-top: 15px;
+                margin-top: 40px;
+				.sigin-google{
+					display: flex;
+					align-items:center;
+					justify-content: center;
+				
+					span{
+					   padding-left: 10px;
+					}
+				}
                 .input{
                         margin: 5px 0px;
                     }
                 button, .btn-create {
                     width: 100%;
                     padding: 10px;
-                   argin: 10px 0px;
 
                 } border-radius:5px;
-                    m
+                    
             }
             .btn-create {
                 width: 100%;
@@ -99,14 +107,7 @@ export const Container = styled.div`
                         filter: brightness(0.9);
                     }
             }
-            .login-with-google{
-                background-color: #ddd;
-                display: flex;
-                justify-content: space-between;
-                span{
-                    flex: 4;
-                }
-            }
+           
         }
 
     .separetor{

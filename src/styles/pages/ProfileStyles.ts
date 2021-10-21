@@ -3,11 +3,13 @@ import styled from 'styled-components'
 
 export const CardContent = styled.div`
    width: 100%;
-   height: auto;
    display: flex;
    justify-content: space-between;
    flex-direction: row;
-   height: 80vh;
+   height: auto;
+   .content-btn-update{
+	   background-color: #f00;
+   }
 `
 
 
@@ -16,13 +18,12 @@ export const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
     padding-bottom: 40px;
-   
 `
 
 
 export const ProfileStudante = styled.div`
-    width: 35%;
-    height: 55vh;
+    width: 38%;
+    height: auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -30,6 +31,20 @@ export const ProfileStudante = styled.div`
     border-radius: 10px;
     padding-bottom: 40px;
     box-shadow: 1px 0px 4px 0px rgba(0,0,0,0.3);
+	.select-option{
+	           margin-left: 10px;
+                flex: 5;
+                display: flex;
+                align-items: center;
+                select{
+                    color: #555;
+                    font-size: 16pt;
+                    width: 100%;
+					background-color: #fff;
+					font-size: 12pt;
+                }
+   }
+
     .profile-avatar{
         width: 80%;
         padding: 30px 20px;
@@ -56,24 +71,28 @@ export const ProfileStudante = styled.div`
     .info-estudent{
         width: 90%;
         li{
-            padding: 10px 10px;
             list-style: none;
             border:1px solid #ddd;
-            font-size: 1.4em;
+			font-size: 12pt;
             display: flex;
             align-items: center;
             justify-content: space-between;
+			margin-top: 10px;
+			padding-right: 10px;
+		
             strong{
-                flex: 4;
+                flex: 3;
+				border: 1px solid #ddd;
+				padding: 10px 10px;
             }
             span{
                 margin-left: 10px;
                 flex: 5;
                 display: flex;
                 align-items: center;
-                font-size: 1.2em;
+                font-size: 12pt;
                 input{
-            
+					font-size: 12pt;
                     color: #555;
                     font-size: 1em;
                     width: 100%;
@@ -97,11 +116,12 @@ export const ProfileStudante = styled.div`
 
 `
 
-export const CardInformation= styled.div`
+export const CardInformation = styled.div`
    padding: 20px;
    box-shadow: 1px 0px 4px 0px rgba(0,0,0,0.3);
    border-radius: 10px;
    margin-top: 20px;
+   height: auto;
    .header-info{
        border-bottom: 1px solid #ddd;
        padding: 10px;
@@ -109,43 +129,66 @@ export const CardInformation= styled.div`
    .body-info{
     padding: 10px;
     li{
-            padding: 10px 10px;
             list-style: none;
             border:1px solid #ddd;
-            font-size: 1.4em;
+            font-size: 12pt;
             display: flex;
             align-items: center;
             justify-content: space-between;
+			margin-top: 10px;
+			padding-right: 10px;
             strong{
-                flex: 2;
+                flex: 1.2;
+				border: 1px solid #ddd;
+				padding: 10px 10px;
             }
             span{
                 margin-left: 10px;
                 flex: 5;
                 display: flex;
                 align-items: center;
-                font-size: 1.2em;
+                font-size: 12pt;
                 input{
-            
                     color: #555;
                     font-size: 1em;
                     width: 100%;
-                   
                 }
             }
    }
+   .select-option{
+	           margin-left: 10px;
+                flex: 5;
+                display: flex;
+                align-items: center;
+                select{
+                    color: #555;
+                    font-size: 16pt;
+                    width: 100%;
+					background-color: #fff;
+					font-size: 12pt;
+                }
+   }
   
 }
-.btn-update{
+
+`
+
+export const ContentUpdate = styled.div`
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   .btn-update{
             display: flex;
             justify-content: flex-end;
             padding: 10px 0px;
+		
             button{
                 padding: 10px;
                 border-radius: 5px;
                 cursor: pointer;
+				width: 10em;
+				font-size: 12pt;
             }
         }
-`
-    
-  
+`;
+

@@ -47,10 +47,9 @@ const SignUp = () => {
         setCreateLoading(false);
       } else {
         const account={ email: form.email, password: form.password};
-        const res:any = createAccount({fullName: form.fullName, access: form.access, type: form.type, active: form.active, phoneNumber: form.phoneNumber}, {email: form.email, password:form.password});
+        //const res:any = createAccount({fullName: form.fullName, access: form.access, type: form.type, active: form.active, phoneNumber: form.phoneNumber}, {email: form.email, password:form.password});
         history.push('/dashboard');
       }
-
   };
   const onClearForm = () => {
       setForm({
